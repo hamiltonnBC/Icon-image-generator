@@ -45,9 +45,13 @@ Output goes to `dist/`.
 - HTML5 Canvas API for rendering and export
 - Devicons CDN for the icon library
 
+## Contributing
+
+Contributions are welcome! Feel free to message me directly or just fork the repo and open a PR. 
+
 ## Author
 
-**Nicholas Trey Hamilton**
+**Nicholas Trey Hamilton** 
 
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/hamiltonnBC)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/nicholas-trey-hamilton/)
