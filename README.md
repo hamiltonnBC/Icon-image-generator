@@ -1,73 +1,54 @@
-# React + TypeScript + Vite
+# Icon Grid Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple browser tool for building icon grid images. Pick icons from the Devicons library, organize them into categories, tweak the layout, and export the result as a PNG or JPEG. Everything runs client-side, no backend needed.
 
-Currently, two official plugins are available:
+**Live demo:** [https://hamiltonnbc.github.io/Icon-image-generator/](https://hamiltonnbc.github.io/Icon-image-generator/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## What it looks like
 
-## React Compiler
+![Application Layout](public/application_layout.jpeg)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Here's the main interface. From left to right:
 
-## Expanding the ESLint configuration
+- **Icon Library (left sidebar)** - Search the full Devicons collection and pick a target category before clicking to add
+- **Canvas Preview (center top)** - Live preview of your grid that updates as you make changes
+- **Icon List (center bottom)** - All your added icons grouped by category, with reorder and remove controls
+- **Settings (right, left column)** - Icon size, columns, max rows, category layout direction, labels, and background options
+- **Export + Categories (right, right column)** - Download as PNG/JPEG, and manage your categories (create, rename, delete, reorder)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Example export
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Here's what an exported icon grid looks like:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+![Exported Icon Grid](public/icon-grid.png)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Running locally
+
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Then open [http://localhost:5173](http://localhost:5173).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Building
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build
 ```
+
+Output goes to `dist/`.
+
+## Tech stack
+
+- React + TypeScript + Vite
+- HTML5 Canvas API for rendering and export
+- Devicons CDN for the icon library
+
+## Author
+
+**Nicholas Trey Hamilton**
+
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/hamiltonnBC)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/nicholas-trey-hamilton/)
+[![Website](https://img.shields.io/badge/Website-4285F4?style=for-the-badge&logo=google-chrome&logoColor=white)](https://nicholastreyhamilton.com)
