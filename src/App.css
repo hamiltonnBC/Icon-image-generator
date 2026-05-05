@@ -1,8 +1,88 @@
-/* App Layout — 3-column grid filling the viewport */
+/* App Wrapper */
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Header */
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 24px;
+  border-bottom: 1px solid var(--border, #e5e4e7);
+  background: var(--bg, #fff);
+  flex-shrink: 0;
+}
+
+.app-header__logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.app-header__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.app-header__title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+
+.app-header__description {
+  font-size: 13px;
+  color: var(--text, #6b6375);
+  margin: 0;
+  max-width: 600px;
+}
+
+/* Footer */
+.app-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 10px 24px;
+  border-top: 1px solid var(--border, #e5e4e7);
+  background: var(--bg, #fff);
+  flex-shrink: 0;
+  font-size: 13px;
+  color: var(--text, #6b6375);
+}
+
+.app-footer__name {
+  font-weight: 500;
+}
+
+.app-footer__links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.app-footer__link {
+  color: var(--text, #6b6375);
+  transition: color 0.15s;
+  display: flex;
+  align-items: center;
+}
+
+.app-footer__link:hover {
+  color: var(--accent, #aa3bff);
+}
+
+/* App Layout — 3-column grid filling the remaining space */
 .app-layout {
   display: grid;
-  grid-template-columns: 280px 1fr 300px;
-  height: 100vh;
+  grid-template-columns: 280px 1fr 520px;
+  flex: 1;
   overflow: hidden;
 }
 
@@ -20,9 +100,16 @@
 
 .app-layout__sidebar--right {
   border-left: 1px solid var(--border, #e5e4e7);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-content: start;
+}
+
+.app-layout__sidebar-col {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
 }
 
 /* Main content area */
@@ -281,6 +368,8 @@
   gap: 8px;
   padding: 6px 0;
   border-bottom: 1px solid var(--border, #e5e4e7);
+  min-width: 0;
+  overflow: hidden;
 }
 
 .category-manager__item:last-child {
@@ -335,8 +424,21 @@
 .category-manager__edit {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.category-manager__edit-input {
+  min-width: 0;
+  flex: 1;
+}
+
+.category-manager__save-btn,
+.category-manager__cancel-btn {
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .category-manager__empty {
@@ -372,12 +474,39 @@
 .icon-list__item {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   padding: 4px 8px;
   border: 1px solid var(--border, #e5e4e7);
   border-radius: 6px;
   background: #fff;
   font-size: 12px;
+}
+
+.icon-list__reorder {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.icon-list__move-btn {
+  padding: 0 3px;
+  border: 1px solid var(--border, #e5e4e7);
+  border-radius: 3px;
+  background: none;
+  cursor: pointer;
+  font-size: 8px;
+  line-height: 1.2;
+  color: #666;
+}
+
+.icon-list__move-btn:hover:not(:disabled) {
+  background: var(--accent-bg, rgba(170, 59, 255, 0.1));
+  border-color: var(--accent-border, rgba(170, 59, 255, 0.5));
+}
+
+.icon-list__move-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
 }
 
 .icon-list__thumbnail {

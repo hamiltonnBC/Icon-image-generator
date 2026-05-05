@@ -1,8 +1,7 @@
 import { useGridContext } from '../state/context.js';
 
 /**
- * Displays icons grouped by category with remove buttons.
- * A simple list view replacing the drag-and-drop grid editor.
+ * Displays icons grouped by category with remove and reorder buttons.
  */
 export function IconList() {
   const { state, dispatch } = useGridContext();
@@ -10,6 +9,13 @@ export function IconList() {
 
   function handleRemoveIcon(iconId: string) {
     dispatch({ type: 'REMOVE_ICON', payload: { iconId } });
+  }
+
+  function handleMoveIcon(categoryId: string, sourceIndex: number, destinationIndex: number) {
+    dispatch({
+      type: 'REORDER_ICON',
+      payload: { categoryId, sourceIndex, destinationIndex },
+    });
   }
 
   if (categories.length === 0) {
@@ -28,11 +34,33 @@ export function IconList() {
         <div key={category.id} className="icon-list__category">
           <h4 className="icon-list__category-header">{category.name}</h4>
           <div className="icon-list__icons">
-            {category.iconIds.map((iconId) => {
+            {category.iconIds.map((iconId, index) => {
               const icon = icons[iconId];
               if (!icon) return null;
               return (
                 <div key={iconId} className="icon-list__item">
+                  <div className="icon-list__reorder">
+                    <button
+                      type="button"
+                      className="icon-list__move-btn"
+                      onClick={() => handleMoveIcon(category.id, index, index - 1)}
+                      disabled={index === 0}
+                      aria-label={`Move ${icon.displayName} left`}
+                      title="Move left"
+                    >
+                      ◀
+                    </button>
+                    <button
+                      type="button"
+                      className="icon-list__move-btn"
+                      onClick={() => handleMoveIcon(category.id, index, index + 1)}
+                      disabled={index === category.iconIds.length - 1}
+                      aria-label={`Move ${icon.displayName} right`}
+                      title="Move right"
+                    >
+                      ▶
+                    </button>
+                  </div>
                   <img
                     src={icon.svgUrl}
                     alt={icon.displayName}
