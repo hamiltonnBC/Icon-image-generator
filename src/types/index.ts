@@ -16,13 +16,16 @@ export interface Category {
 
 export interface GridSettings {
   iconSize: number;         // 32–256 pixels
+  columns: number;          // icons per row
+  maxRows: number;          // max rows per category (0 = unlimited)
+  categoryDirection: 'vertical' | 'horizontal'; // stack categories top-to-bottom or left-to-right
   labelEnabled: boolean;
   labelPosition: 'above' | 'below';
   labelFontSize: number;    // in pixels
   categoryHeaderEnabled: boolean; // show/hide category headers on canvas
   background: 'white' | 'transparent';
   padding: number;          // spacing between icons
-  categorySpacing: number;  // vertical space between category sections
+  categorySpacing: number;  // vertical/horizontal space between category sections
 }
 
 export interface GridState {

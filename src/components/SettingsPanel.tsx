@@ -33,6 +33,73 @@ export function SettingsPanel() {
         />
       </div>
 
+      {/* Columns */}
+      <div className="settings-panel__field">
+        <label htmlFor="columns" className="settings-panel__label">
+          Columns: {settings.columns}
+        </label>
+        <input
+          id="columns"
+          type="range"
+          min={1}
+          max={20}
+          step={1}
+          value={settings.columns}
+          onChange={(e) => updateSettings({ columns: Number(e.target.value) })}
+          aria-valuemin={1}
+          aria-valuemax={20}
+          aria-valuenow={settings.columns}
+          aria-valuetext={`${settings.columns} columns`}
+        />
+      </div>
+
+      {/* Max Rows */}
+      <div className="settings-panel__field">
+        <label htmlFor="max-rows" className="settings-panel__label">
+          Max Rows: {settings.maxRows === 0 ? 'Unlimited' : settings.maxRows}
+        </label>
+        <input
+          id="max-rows"
+          type="range"
+          min={0}
+          max={20}
+          step={1}
+          value={settings.maxRows}
+          onChange={(e) => updateSettings({ maxRows: Number(e.target.value) })}
+          aria-valuemin={0}
+          aria-valuemax={20}
+          aria-valuenow={settings.maxRows}
+          aria-valuetext={settings.maxRows === 0 ? 'Unlimited' : `${settings.maxRows} rows`}
+        />
+      </div>
+
+      {/* Category Direction */}
+      <fieldset className="settings-panel__field settings-panel__fieldset">
+        <legend className="settings-panel__label">Category Layout</legend>
+        <label htmlFor="dir-vertical" className="settings-panel__radio-label">
+          <input
+            id="dir-vertical"
+            type="radio"
+            name="categoryDirection"
+            value="vertical"
+            checked={settings.categoryDirection === 'vertical'}
+            onChange={() => updateSettings({ categoryDirection: 'vertical' })}
+          />
+          Stacked (top to bottom)
+        </label>
+        <label htmlFor="dir-horizontal" className="settings-panel__radio-label">
+          <input
+            id="dir-horizontal"
+            type="radio"
+            name="categoryDirection"
+            value="horizontal"
+            checked={settings.categoryDirection === 'horizontal'}
+            onChange={() => updateSettings({ categoryDirection: 'horizontal' })}
+          />
+          Side by side (left to right)
+        </label>
+      </fieldset>
+
       {/* Label Enabled */}
       <div className="settings-panel__field">
         <label htmlFor="label-enabled" className="settings-panel__label">

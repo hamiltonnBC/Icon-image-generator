@@ -5,6 +5,9 @@ import { gridReducer } from './reducer.js';
 
 const defaultSettings = {
   iconSize: 64,
+  columns: 10,
+  maxRows: 0,
+  categoryDirection: 'vertical' as const,
   labelEnabled: true,
   labelPosition: 'below' as const,
   labelFontSize: 12,
